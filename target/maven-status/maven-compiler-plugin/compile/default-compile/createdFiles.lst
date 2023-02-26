@@ -1,0 +1,6 @@
+main\Main.class
+imageprocessor\ImageReader.class
+imageprocessor\ImageWriter.class
+exception\BadArgsException.class
+imageprocessor\ImageCompressor.class
+imageprocessor\ImageDecompressor.class
