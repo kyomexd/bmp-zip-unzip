@@ -9,11 +9,11 @@ import java.io.IOException;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        ImageWriter.writeCompressedImage(
+        ImageWriter.writeImage(
                 ImageCompressor.zipImage(ImageReader.readImage("C:\\Users\\Pc\\Downloads\\venus.bmp")),
                 "C:\\Users\\Pc\\Downloads\\venus2.rle");
-        ImageWriter.writeCompressedImage(
-                ImageDecompressor.unzipImage(ImageReader.readCompressedImage("C:\\Users\\Pc\\Downloads\\venus2.rle")),
+        ImageWriter.writeImage(
+                ImageDecompressor.unzipImage(ImageReader.readImage("C:\\Users\\Pc\\Downloads\\venus2.rle")),
                 "C:\\Users\\Pc\\Downloads\\venus2.bmp");
 //        showBytes();
     }

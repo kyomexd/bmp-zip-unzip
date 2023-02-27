@@ -12,14 +12,8 @@ import java.nio.file.Paths;
 
 public class ImageWriter {
 
-    public static void writeCompressedImage(byte[] imageBytes, String pathString) throws IOException {
+    public static void writeImage(byte[] imageBytes, String pathString) throws IOException {
         Path path = Paths.get(pathString);
         Files.write(path, imageBytes);
-    }
-
-    public static void writeImage(byte[] imageBytes, String pathString) throws IOException {
-        InputStream is = new ByteArrayInputStream(imageBytes);
-        BufferedImage img = ImageIO.read(is);
-        ImageIO.write(img, "bmp", new File(pathString));
     }
 }

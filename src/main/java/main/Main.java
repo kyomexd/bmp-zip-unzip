@@ -17,14 +17,14 @@ public class Main {
         String pathToInputFile = args[1];
         String pathToOutputFile = args[2];
         if (args[0].equals("zip")) {
-            ImageWriter.writeCompressedImage(
+            ImageWriter.writeImage(
                     ImageCompressor.zipImage(ImageReader.readImage(pathToInputFile)),
                     pathToOutputFile
             );
         }
         if (args[0].equals("unzip")) {
             ImageWriter.writeImage(
-                    ImageDecompressor.unzipImage(ImageReader.readCompressedImage(pathToInputFile)),
+                    ImageDecompressor.unzipImage(ImageReader.readImage(pathToInputFile)),
                     pathToOutputFile
             );
         }
