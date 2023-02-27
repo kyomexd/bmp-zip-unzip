@@ -1,28 +1,26 @@
 package imageprocessor;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 public class ImageDecompressor {
 
-    public static byte[] unzipImage(byte[] imageBytes) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int matchCounter = imageBytes[0];
-        int i = 1;
-        while (i <= imageBytes.length - 1) {
-            byte thisByte = imageBytes[i];
-            for (int y = 0; y < matchCounter; y++) {
-                baos.write(thisByte);
+    public static byte[] unzipImage(byte[] imageBytes) {
+        ByteArrayOutputStream decompressedImage = new ByteArrayOutputStream();
+        for (int i = 0; i < imageBytes.length; i++) {
+            int counter = imageBytes[i];
+            if (counter > 0) {
+                i++;
+                for (int y = 0; y < counter; y++) {
+                    decompressedImage.write(imageBytes[i]);
+                }
             }
-            if (i == imageBytes.length - 1) {
-                break;
+            if (counter < 0) {
+                for (int y = counter; y < 0; y++) {
+                    i++;
+                    decompressedImage.write(imageBytes[i]);
+                }
             }
-            i++;
-            matchCounter = imageBytes[i];
-            i++;
         }
-
-        baos.flush();
-        return baos.toByteArray();
+        return decompressedImage.toByteArray();
     }
 }
